@@ -1,0 +1,309 @@
+/* --- PALETA DE COLORES Y VARIABLES MODERNAS --- */
+:root {
+  --bg-app: #f1f5f9;      /* Gris muy suave de fondo */
+  --bg-board: #ffffff;   /* Fondo blanco para el tablero */
+  --text-main: #1e293b;  /* Azul marino oscuro legible */
+  --text-muted: #64748b;
+  
+  --primary: #2563eb;     /* Azul vibrante moderno */
+  --primary-hover: #1d4ed8;
+  --success: #10b981;    /* Verde esmeralda para completadas */
+  --danger: #ef4444;     /* Rojo suave */
+  --warning: #f59e0b;    /* Ámbar para editar */
+
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+
+/* --- RESET BÁSICO --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text-dark);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;     
+  justify-content: center;   
+  min-height: 100vh;      
+  width: 100vw;          
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+.kanban-app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- CABECERA ESTILO DASHBOARD --- */
+.main-header {
+  background: white;
+  padding: 20px 40px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: center;
+}
+
+.header-content h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* --- CONTENEDOR DEL TABLERO --- */
+.board-container {
+  flex: 1;
+  padding: 30px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- BARRA DE HERRAMIENTAS (User e Input) --- */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+/* Pastilla de Usuario Moderna */
+.user-pill {
+  background: white;
+  padding: 8px 16px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #e2e8f0;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.user-email {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.btn-logout-icon {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+  padding: 0 5px;
+}
+
+.btn-logout-icon:hover { color: var(--danger); }
+
+/* Grupo de Input Estilo Búsqueda */
+.input-group-modern {
+  display: flex;
+  background: white;
+  border-radius: 30px;
+  padding: 5px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #e2e8f0;
+  width: 100%;
+  max-width: 400px;
+}
+
+.task-input-modern {
+  flex: 1;
+  border: none;
+  padding: 10px 15px;
+  font-size: 0.95rem;
+  outline: none;
+  color: var(--text-main);
+}
+
+.task-input-modern::placeholder { color: #cbd5e1; }
+
+.btn-add-modern, .btn-cancel-modern {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-add-modern {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-add-modern:hover { background-color: var(--primary-hover); transform: scale(1.05); }
+
+.btn-cancel-modern {
+  background-color: #f1f5f9;
+  color: var(--text-muted);
+  margin-left: 5px;
+}
+.btn-cancel-modern:hover { background-color: #e2e8f0; color: var(--danger); }
+
+/* --- DISEÑO KANBAN (GRID) --- */
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  align-items: flex-start;
+}
+
+.kanban-column {
+  background: #f8fafc; /* Gris ligeramente diferente para la columna */
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.column-header h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.pending .column-header { border-color: var(--primary); h2 { color: var(--primary); } }
+.completed .column-header { border-color: var(--success); h2 { color: var(--success); } }
+
+.count-pill {
+  background: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border: 1px solid #e2e8f0;
+}
+
+.column-body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-height: 100px;
+}
+
+/* --- TARJETAS DE TAREA (CARDS) --- */
+.task-card {
+  background: white;
+  padding: 18px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Estilo para tareas completadas */
+.task-card.done {
+  border-left: 4px solid var(--success);
+  opacity: 0.8;
+}
+
+.task-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/* Botones de Acción dentro de la Card */
+.task-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 10px;
+}
+
+.action-icon {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.action-icon:hover { transform: scale(1.1); }
+
+.action-icon.check:hover { background: #ecfdf5; color: var(--success); border-color: #a7f3d0; }
+.action-icon.undo:hover { background: #f0f9ff; color: var(--primary); border-color: #bae6fd; }
+.action-icon.edit:hover { background: #fffbeb; color: var(--warning); border-color: #fde68a; }
+.action-icon.delete:hover { background: #fef2f2; color: var(--danger); border-color: #fecaca; }
+
+.empty-msg {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-style: italic;
+  padding: 20px 0;
+}
+
+/* --- AJUSTES PARA RESPONSIVE (MÓVIL) --- */
+@media (max-width: 768px) {
+  .board-container { padding: 20px; }
+  .toolbar { flex-direction: column; align-items: stretch; }
+  .input-group-modern { max-width: 100%; }
+  .main-header { padding: 15px; }
+  .main-header h1 { font-size: 1.4rem; }
+}
