@@ -10,7 +10,7 @@ function App() {
   const [nuevaTarea, setNuevaTarea] = useState("");
   const [editandoId, setEditandoId] = useState(null);
 
-  const API_URL = "https://skop61ytt6.execute-api.us-east-1.amazonaws.com/tareas";
+  const API_URL = "https://ctwhqhic0a.execute-api.us-east-1.amazonaws.com";
 
   const getHeaders = async () => {
     try {
@@ -106,7 +106,6 @@ function App() {
         <header className="main-header">
           <div className="header-content">
             <h1>Mis Tareas en AWS</h1>
-            <p className="subtitle">Dashboard de Ingeniería</p>
           </div>
         </header>
 
