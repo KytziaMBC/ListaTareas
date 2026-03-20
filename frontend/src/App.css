@@ -358,7 +358,10 @@ body {
   --amplify-colors-brand-primary-80: var(--primary);
   --amplify-colors-brand-primary-90: var(--primary-hover);
   --amplify-radii-medium: var(--radius-md);
-  margin-top: 40px;
+  margin: 60px auto;
+  max-width: 450px;
+  width: 90%;
+  box-shadow: var(--shadow-md);
 }
 
 /* --- RESPONSIVE --- */

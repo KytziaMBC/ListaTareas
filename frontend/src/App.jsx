@@ -109,7 +109,7 @@ function App() {
           </div>
         </header>
 
-        <Authenticator>
+        <Authenticator loginMechanisms={['email']}>
           {({ signOut, user }) => (
             <main className="board-container">
               
