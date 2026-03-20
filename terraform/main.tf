@@ -178,7 +178,7 @@ variable "github_token" {}
 
 resource "aws_amplify_app" "proyecto_crud" {
   name        = "CRUD-Tareas-Joanna"
-  repository  = "https://github.com/JoannaM14/react-crud-aws"
+  repository  = "https://github.com/KytziaMBC/ListaTareas"
   oauth_token = var.github_token
 
   build_spec = <<-EOT

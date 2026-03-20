@@ -1,14 +1,14 @@
 /* --- PALETA DE COLORES Y VARIABLES MODERNAS --- */
 :root {
-  --bg-app: #f1f5f9;      /* Gris muy suave de fondo */
+  --bg-app: #f1f5f9;      /* Gris azulado muy suave de fondo */
   --bg-board: #ffffff;   /* Fondo blanco para el tablero */
-  --text-main: #1e293b;  /* Azul marino oscuro legible */
-  --text-muted: #64748b;
+  --text-main: #1e293b;  /* Azul marino oscuro para lectura */
+  --text-muted: #64748b; /* Gris para textos secundarios */
   
   --primary: #2563eb;     /* Azul vibrante moderno */
   --primary-hover: #1d4ed8;
   --success: #10b981;    /* Verde esmeralda para completadas */
-  --danger: #ef4444;     /* Rojo suave */
+  --danger: #ef4444;     /* Rojo para acciones destructivas */
   --warning: #f59e0b;    /* Ámbar para editar */
 
   --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
@@ -18,22 +18,23 @@
 }
 
 /* --- RESET BÁSICO --- */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  background-color: var(--bg);
-  color: var(--text-dark);
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;     
-  justify-content: center;   
-  min-height: 100vh;      
-  width: 100vw;          
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  overflow-x: hidden;
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
 }
 
+body {
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- ESTRUCTURA PRINCIPAL --- */
 .kanban-app {
   display: flex;
   flex-direction: column;
@@ -47,6 +48,8 @@ body {
   border-bottom: 1px solid #e2e8f0;
   display: flex;
   justify-content: center;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
 }
 
 .header-content h1 {
@@ -59,13 +62,14 @@ body {
 .subtitle {
   font-size: 0.85rem;
   color: var(--text-muted);
+  margin-top: 4px;
 }
 
 /* --- CONTENEDOR DEL TABLERO --- */
 .board-container {
   flex: 1;
   padding: 30px 40px;
-  max-width: 1400px;
+  max-width: 1400px; 
   margin: 0 auto;
   width: 100%;
 }
@@ -77,9 +81,9 @@ body {
   align-items: center;
   margin-bottom: 30px;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
-/* Pastilla de Usuario Moderna */
 .user-pill {
   background: white;
   padding: 8px 16px;
@@ -101,91 +105,112 @@ body {
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .user-email {
   font-size: 0.9rem;
   color: var(--text-main);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .btn-logout-icon {
-  background: none;
+  background: #f1f5f9;
   border: none;
-  color: #94a3b8;
+  color: var(--text-muted);
   cursor: pointer;
-  font-size: 1.1rem;
-  transition: color 0.2s;
-  padding: 0 5px;
-}
-
-.btn-logout-icon:hover { color: var(--danger); }
-
-/* Grupo de Input Estilo Búsqueda */
-.input-group-modern {
-  display: flex;
-  background: white;
-  border-radius: 30px;
-  padding: 5px;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid #e2e8f0;
-  width: 100%;
-  max-width: 400px;
-}
-
-.task-input-modern {
-  flex: 1;
-  border: none;
-  padding: 10px 15px;
-  font-size: 0.95rem;
-  outline: none;
-  color: var(--text-main);
-}
-
-.task-input-modern::placeholder { color: #cbd5e1; }
-
-.btn-add-modern, .btn-cancel-modern {
-  width: 40px;
-  height: 40px;
+  font-size: 0.8rem;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1.2rem;
   transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.btn-logout-icon:hover { 
+  background: var(--danger); 
+  color: white; 
+}
+
+.input-group-modern {
+  display: flex;
+  background: white;
+  border-radius: 30px;
+  padding: 5px 5px 5px 15px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #e2e8f0;
+  width: 100%;
+  max-width: 500px;
+  transition: border-color 0.2s;
+}
+
+.input-group-modern:focus-within {
+  border-color: var(--primary);
+}
+
+.task-input-modern {
+  flex: 1;
+  border: none;
+  padding: 10px 5px;
+  font-size: 0.95rem;
+  outline: none;
+  color: var(--text-main);
+  background: transparent;
+}
+
+.btn-add-modern, .btn-cancel-modern {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
 .btn-add-modern {
   background-color: var(--primary);
   color: white;
+  font-size: 1.2rem;
 }
 
-.btn-add-modern:hover { background-color: var(--primary-hover); transform: scale(1.05); }
+.btn-add-modern:hover { 
+  background-color: var(--primary-hover); 
+  transform: scale(1.05); 
+}
 
 .btn-cancel-modern {
   background-color: #f1f5f9;
   color: var(--text-muted);
   margin-left: 5px;
 }
-.btn-cancel-modern:hover { background-color: #e2e8f0; color: var(--danger); }
 
-/* --- DISEÑO KANBAN (GRID) --- */
+.btn-cancel-modern:hover { 
+  background-color: #fee2e2; 
+  color: var(--danger); 
+}
+
+/* --- DISEÑO KANBAN (COLUMNAS DUALES) --- */
 .kanban-board {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr 1fr; 
   gap: 25px;
   align-items: flex-start;
+  width: 100%;
 }
 
 .kanban-column {
-  background: #f8fafc; /* Gris ligeramente diferente para la columna */
+  background: rgba(248, 250, 252, 0.8);
   border-radius: var(--radius-lg);
-  padding: 20px;
+  padding: 24px;
   border: 1px solid #e2e8f0;
+  min-height: 500px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
 }
 
 .column-header {
@@ -193,7 +218,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 12px;
   border-bottom: 2px solid #e2e8f0;
 }
 
@@ -202,108 +227,153 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--text-muted);
 }
 
-.pending .column-header { border-color: var(--primary); h2 { color: var(--primary); } }
-.completed .column-header { border-color: var(--success); h2 { color: var(--success); } }
+/* Estilos de estado por columna */
+.pending { border-top: 6px solid var(--primary); }
+.pending .column-header h2 { color: var(--primary); }
+
+.completed { border-top: 6px solid var(--success); }
+.completed .column-header h2 { color: var(--success); }
 
 .count-pill {
   background: white;
-  padding: 4px 12px;
+  padding: 4px 14px;
   border-radius: 20px;
-  font-weight: 700;
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--text-main);
   border: 1px solid #e2e8f0;
+  box-shadow: var(--shadow-sm);
 }
 
 .column-body {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  min-height: 100px;
+  gap: 16px;
 }
 
 /* --- TARJETAS DE TAREA (CARDS) --- */
 .task-card {
   background: white;
-  padding: 18px;
+  padding: 20px;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   border: 1px solid #e2e8f0;
-  transition: all 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
 .task-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
   box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
 }
 
-/* Estilo para tareas completadas */
+/* Tarjeta completada */
 .task-card.done {
-  border-left: 4px solid var(--success);
-  opacity: 0.8;
+  background-color: #f8fafc;
+  border-left: 5px solid var(--success);
+  opacity: 0.75;
 }
 
 .task-text {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 500;
   color: var(--text-main);
-  line-height: 1.4;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  display: block;
 }
 
 .strikethrough {
   text-decoration: line-through;
   color: var(--text-muted);
+  font-style: italic;
 }
 
-/* Botones de Acción dentro de la Card */
+/* Botones de Acción */
 .task-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 8px;
+  gap: 10px;
   border-top: 1px solid #f1f5f9;
-  padding-top: 10px;
+  padding-top: 14px;
 }
 
 .action-icon {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 0.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
+  font-size: 1.1rem;
 }
 
-.action-icon:hover { transform: scale(1.1); }
+/* Efectos de Hover por Acción */
+.action-icon.check:hover { 
+  background: #dcfce7; 
+  color: var(--success); 
+  border-color: var(--success);
+  transform: scale(1.1);
+}
 
-.action-icon.check:hover { background: #ecfdf5; color: var(--success); border-color: #a7f3d0; }
-.action-icon.undo:hover { background: #f0f9ff; color: var(--primary); border-color: #bae6fd; }
-.action-icon.edit:hover { background: #fffbeb; color: var(--warning); border-color: #fde68a; }
-.action-icon.delete:hover { background: #fef2f2; color: var(--danger); border-color: #fecaca; }
+.action-icon.undo:hover { 
+  background: #e0f2fe; 
+  color: var(--primary); 
+  border-color: var(--primary);
+  transform: scale(1.1);
+}
+
+.action-icon.edit:hover { 
+  background: #fffbeb; 
+  color: var(--warning); 
+  border-color: #fde68a;
+  transform: scale(1.1);
+}
+
+.action-icon.delete:hover { 
+  background: #fef2f2; 
+  color: var(--danger); 
+  border-color: #fecaca;
+  transform: scale(1.1);
+}
 
 .empty-msg {
   text-align: center;
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  padding: 40px 0;
   font-style: italic;
-  padding: 20px 0;
 }
 
-/* --- AJUSTES PARA RESPONSIVE (MÓVIL) --- */
-@media (max-width: 768px) {
-  .board-container { padding: 20px; }
-  .toolbar { flex-direction: column; align-items: stretch; }
-  .input-group-modern { max-width: 100%; }
-  .main-header { padding: 15px; }
-  .main-header h1 { font-size: 1.4rem; }
+/* --- LOGIN DE AMPLIFY --- */
+[data-amplify-authenticator] {
+  --amplify-colors-brand-primary-80: var(--primary);
+  --amplify-colors-brand-primary-90: var(--primary-hover);
+  --amplify-radii-medium: var(--radius-md);
+  margin-top: 40px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .kanban-board { 
+    grid-template-columns: 1fr; 
+  }
+  .board-container { 
+    padding: 20px; 
+  }
+  .toolbar { 
+    flex-direction: column-reverse; 
+    align-items: stretch; 
+  }
+  .input-group-modern { 
+    max-width: 100%; 
+  }
 }
