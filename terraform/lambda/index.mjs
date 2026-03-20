@@ -31,8 +31,8 @@ export const handler = async (event) => {
         const requestJSON = JSON.parse(event.body);
         const item = {
           id: requestJSON.id || Date.now().toString(),
-          info: requestJSON.info
-          completada: requestJSON.completada ?? false
+          info: requestJSON.info,
+          completada: requestJSON.completada || false
         };
         await dynamo.send(new PutCommand({ TableName: tableName, Item: item }));
         body = item;
